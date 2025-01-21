@@ -9,7 +9,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      userId: 'A-0002',
+      userId: 'A-0001',
       password: 'admin123',
     },
   });
@@ -26,10 +26,11 @@ const Login = () => {
     const user = verifyToken(res.data.accessToken);
 
     dispatch(setUser({ user: user, token: res.data.accessToken }));
+    console.log('User:', user);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} >
       <div>
         <label htmlFor="id">ID: </label>
         <input type="text" id="id" {...register('userId')} />
